@@ -8,7 +8,7 @@
           <img :src="props.active? index.active : index.default" />
         </template>
       </van-tabbar-item>
-      <van-tabbar-item name="my" replace to="/My"> 
+      <van-tabbar-item name="my" replace to="/Login"> 
        <span>我的</span>
         <template #icon="props">
           <img :src="props.active? home.active : home.default" />
