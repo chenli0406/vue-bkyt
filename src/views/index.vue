@@ -5,7 +5,7 @@
         <div class="tab-content">
           <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
             <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-              <div class="list-item" v-for="(item , index) in list" :key="index">
+              <div class="list-item" v-for="(item , index) in list" :key="index" @click="gotoDetails">
                 <van-image round width="60px" height="60px" :src="item.imgPath">
                   <template v-slot:loading>
                     <van-loading type="spinner" size="20" />
@@ -70,14 +70,21 @@ export default {
           sex: 0,
           age: '19',
           grade: '王者',
+        }, 
+         {
+          imgPath: require('@/assets/img/2.png'),
+          title: '大王叫我来巡山',
+          sex: 1,
+          age: '19',
+          grade: '王者',
         },
         {
           imgPath: require('@/assets/img/2.png'),
           title: '大王叫我来巡山',
-          sex: 1,
+          sex: 0,
           age: '19',
           grade: '王者',
-        },
+        }, 
          {
           imgPath: require('@/assets/img/2.png'),
           title: '大王叫我来巡山',
@@ -85,13 +92,13 @@ export default {
           age: '19',
           grade: '王者',
         },
-         {
+        {
           imgPath: require('@/assets/img/2.png'),
           title: '大王叫我来巡山',
-          sex: 1,
+          sex: 0,
           age: '19',
           grade: '王者',
-        },
+        }, 
       ],
       loading: false,
       finished: false,
@@ -127,16 +134,19 @@ export default {
       this.loading = true;
       this.onLoad();
     },
+    gotoDetails(){
+      this.$router.push('/PersonalHomePage');
+    }
   },
 };
 </script>
-<style lang="scss">
-.content {
-  height: 100%;
-  background: #F9FAFC;
-}
+<style>
 .van-tabs--card > .van-tabs__wrap {
   height: 70px !important;
+ 
+}
+.van-tabs__wrap{
+   background: #F9FAFC;
 }
 .van-tabs__nav--card {
   border: none !important;
@@ -167,8 +177,7 @@ export default {
   background: #FFFFFF;
   border-radius: 80px 80px 0px 0px;
   padding: 40px;
-  margin-bottom: 100px;
-  height: 70%;
+  padding-bottom: 140px;
 } 
 .van-tabs__nav {
   background-color: transparent;
@@ -176,6 +185,13 @@ export default {
   margin: 30px auto;
   width: 80%;
 }
+</style>
+<style lang="scss"  scoped>
+.content {
+  height: 100%;
+  background: #F9FAFC;
+}
+
 .list-item {
   display: flex;
   justify-content: space-between;

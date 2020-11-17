@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-
+import store from '@/store';
 Vue.use(VueRouter);
 
 const routes = [
@@ -131,4 +131,17 @@ const router = new VueRouter({
   routes
 });
 
+router.beforeEach((to, form, next) => {
+  if (to.meta && to.meta.title) {
+    document.title = to.meta.title;
+  }
+  if (to.path === '/') {
+    store.commit('setTabbarIndex', 0);
+  } else if (to.path === '/My') {
+    store.commit('setTabbarIndex', 1);
+  } else {
+    store.commit('setTabbarIndex', 2);
+  }
+  next();
+})
 export default router;

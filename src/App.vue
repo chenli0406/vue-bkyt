@@ -1,14 +1,14 @@
 <template>
   <div id="app">
     <router-view />
-    <van-tabbar route v-model="active" active-color="#000" inactive-color="#999999" >
+    <van-tabbar route v-model="active" active-color="#000" inactive-color="#999999" v-show="tabbarIndex <= 1">
       <van-tabbar-item name="index" replace to="/">
         <span>首页</span>
         <template #icon="props">
           <img :src="props.active? index.active : index.default" />
         </template>
       </van-tabbar-item>
-      <van-tabbar-item name="my" replace to="/Login"> 
+      <van-tabbar-item name="my" replace to="/My"> 
        <span>我的</span>
         <template #icon="props">
           <img :src="props.active? home.active : home.default" />
@@ -19,7 +19,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
+  computed: {
+    ...mapState(['tabbarIndex'])
+  },
   data() {
     return {
       active: 'index',
@@ -33,6 +37,7 @@ export default {
       },
     };
   },
+ 
 };
 </script>
 
@@ -46,7 +51,8 @@ body {
 }
 .layout-wrap, body, html, #app {
   min-width: 100%;
-  min-height: 100vh;
+  // min-height: 100vh;
+  background-color: #F9FAFC;
   &.bg {
     background-color: #F9FAFC;
   }
@@ -69,5 +75,8 @@ body {
 }
 .van-hairline--top-bottom::after, .van-hairline-unset--top-bottom::after{
   border-width: 0px!important;
+}
+.van-toast--html, .van-toast--text{
+  padding: 20px!important;
 }
 </style>
