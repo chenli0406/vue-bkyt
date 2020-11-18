@@ -230,7 +230,7 @@ export default {
   background-color: transparent;
   height: 70px;
   margin: 30px;
-  width: 100%;
+  
 }
 </style>
 <style lang="scss" scoped>

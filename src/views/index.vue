@@ -5,7 +5,7 @@
         <div class="tab-content">
           <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
             <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-              <div class="list-item" v-for="(item , index) in list" :key="index" @click="gotoDetails">
+              <div class="list-item" v-for="(item, index) in list" :key="index" @click="gotoDetails">
                 <van-image round width="60px" height="60px" :src="item.imgPath">
                   <template v-slot:loading>
                     <van-loading type="spinner" size="20" />
@@ -15,8 +15,8 @@
                   <div class="title">{{ item.title }}</div>
                   <div class="list-item-js">
                     <div class="tip">
-                      <div v-if="item.sex == 1" style="z-index:1"><img src="../assets/img/man.png" /></div>
-                      <div v-else style="z-index:1"><img src="../assets/img/woman.png"></div>
+                      <div v-if="item.sex == 1" style="z-index: 1"><img src="../assets/img/man.png" /></div>
+                      <div v-else style="z-index: 1"><img src="../assets/img/woman.png" /></div>
                       <div class="age">{{ item.age }}</div>
                       <div class="grade">{{ item.grade }}</div>
                     </div>
@@ -31,7 +31,37 @@
         </div>
       </van-tab>
       <van-tab title="邀请的商户">
-        <div class="tab-content">11111111111111</div>
+        <div class="invite-content">
+          <van-list>
+            <div class="invite-item" v-for="(item, index) in listitem" :key="index" @click="gotoMerchant">
+              <!-- <van-image  fit="contain" width="100px" height="100px" :src="item.imgPath">
+                <template v-slot:loading>
+                  <van-loading type="spinner" size="20" />
+                </template>
+              </van-image> -->
+              <van-row>
+                <van-col span="6"
+                  ><div class="invite-img">
+                    <img :src="item.imgPath" /></div
+                ></van-col>
+                <van-col span="18"
+                  ><div class="invite-center">
+                    <div class="invite-title">{{ item.title }}</div>
+                    <div class="invite-js">
+                      <div class="mark">￥</div>
+                      <div class="price">{{ item.price }}</div>
+                      <div style="color: #666">{{ item.type }}</div>
+                    </div>
+                    <div class="invite-distance">
+                      <div class="address">{{ item.address }}</div>
+                      <div>{{ item.num }}</div>
+                    </div>
+                  </div></van-col
+                >
+              </van-row>
+            </div>
+          </van-list>
+        </div>
       </van-tab>
     </van-tabs>
   </div>
@@ -70,8 +100,8 @@ export default {
           sex: 0,
           age: '19',
           grade: '王者',
-        }, 
-         {
+        },
+        {
           imgPath: require('@/assets/img/2.png'),
           title: '大王叫我来巡山',
           sex: 1,
@@ -84,8 +114,8 @@ export default {
           sex: 0,
           age: '19',
           grade: '王者',
-        }, 
-         {
+        },
+        {
           imgPath: require('@/assets/img/2.png'),
           title: '大王叫我来巡山',
           sex: 1,
@@ -98,11 +128,69 @@ export default {
           sex: 0,
           age: '19',
           grade: '王者',
-        }, 
+        },
       ],
       loading: false,
       finished: false,
       refreshing: false,
+      listitem: [
+        {
+          imgPath: require('@/assets/img/2.png'),
+          title: '安定区咖啡厅(环球店)',
+          price: '100元/人',
+          type: '川菜中餐',
+          address: '成都武侯区长白路因之街25号...',
+          num: '1.5KM',
+        },
+        {
+          imgPath: require('@/assets/img/3.png'),
+          title: '安定区咖啡厅(环球店)',
+          price: '100元/人',
+          type: '川菜中餐',
+          address: '成都武侯区长白路因成都武侯区长白路因成都武侯区长白路因之街25号...',
+          num: '1.5KM',
+        },
+        {
+          imgPath: require('@/assets/img/head-1.png'),
+          title: '安定区咖啡厅(环球店)',
+          price: '100元/人',
+          type: '川菜中餐',
+          address: '成都武侯区长白路因之街25号...',
+          num: '1.5KM',
+        },
+        {
+          imgPath: require('@/assets/img/3.png'),
+          title: '安定区咖啡厅(环球店)',
+          price: '100元/人',
+          type: '川菜中餐',
+          address: '成都武侯区长白路因之街25号...',
+          num: '1.5KM',
+        },
+        {
+          imgPath: require('@/assets/img/3.png'),
+          title: '安定区咖啡厅(环球店)',
+          price: '100元/人',
+          type: '川菜中餐',
+          address: '成都武侯区长白路因之街25号...',
+          num: '1.5KM',
+        },
+        {
+          imgPath: require('@/assets/img/3.png'),
+          title: '安定区咖啡厅(环球店)',
+          price: '100元/人',
+          type: '川菜中餐',
+          address: '成都武侯区长白路因之街25号...',
+          num: '1.5KM',
+        },
+        {
+          imgPath: require('@/assets/img/3.png'),
+          title: '安定区咖啡厅(环球店)',
+          price: '100元/人',
+          type: '川菜中餐',
+          address: '成都武侯区长白路因之街25号...',
+          num: '1.5KM',
+        },
+      ],
     };
   },
   created() {},
@@ -134,8 +222,11 @@ export default {
       this.loading = true;
       this.onLoad();
     },
-    gotoDetails(){
+    gotoDetails() {
       this.$router.push('/PersonalHomePage');
+    },
+    gotoMerchant(){
+      this.$router.push('/MerchantDetails');
     }
   },
 };
@@ -143,17 +234,16 @@ export default {
 <style>
 .van-tabs--card > .van-tabs__wrap {
   height: 70px !important;
- 
 }
-.van-tabs__wrap{
-   background: #F9FAFC;
+.van-tabs__wrap {
+  background: #f9fafc;
 }
 .van-tabs__nav--card {
   border: none !important;
 }
 .van-tabs__nav--card .van-tab.van-tab--active {
   color: #fff !important;
-  background-color: #7E6EE3 !important;
+  background-color: #7e6ee3 !important;
   border-radius: 34px;
   font-size: 28px;
   font-weight: 600;
@@ -174,11 +264,11 @@ export default {
 }
 .tab-content {
   margin-top: 40px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 80px 80px 0px 0px;
   padding: 40px;
   padding-bottom: 140px;
-} 
+}
 .van-tabs__nav {
   background-color: transparent;
   height: 70px;
@@ -189,7 +279,7 @@ export default {
 <style lang="scss"  scoped>
 .content {
   height: 100%;
-  background: #F9FAFC;
+  background: #f9fafc;
 }
 
 .list-item {
@@ -224,7 +314,7 @@ export default {
         height: 30px;
         font-size: 0.2rem;
         line-height: 30px;
-        background: #7E6EE3;
+        background: #7e6ee3;
         border-radius: 20px;
         text-align: center;
         color: #fff;
@@ -239,7 +329,7 @@ export default {
         font-size: 0.2rem;
         line-height: 30px;
         text-align: center;
-        background: #FFE066;
+        background: #ffe066;
         border-radius: 20px;
         color: #000;
         padding: 5px 0;
@@ -252,8 +342,68 @@ export default {
     }
   }
 }
-.van-tabs__content{
+.van-tabs__content {
   height: 50%;
   overflow: auto;
+}
+.invite-content {
+  margin: 30px 30px 200px 30px;
+  .invite-item {
+    background: #ffffff;
+    border-radius: 35px;
+    padding: 30px;
+    margin: 30px 0;
+    .invite-img {
+      height: 140px;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+      }
+    }
+    .invite-title {
+      height: 29px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #000000;
+      margin-bottom: 20px;
+    }
+    .invite-center {
+      margin-left: 30px;
+    }
+    .invite-js {
+      display: flex;
+      margin: 10px 0;
+      .mark {
+        width: 30px;
+        height: 30px;
+        background: #ff4b4b;
+        border-radius: 50%;
+        color: #fff;
+        padding: 4px;
+        text-align: center;
+        line-height: 38px;
+        margin-right: 20px;
+      }
+      .price {
+        font-size: 24px;
+        font-weight: 500;
+        color: #000000;
+        margin-right: 20px;
+      }
+    }
+    .invite-distance {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .address {
+        color: #666;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-right: 30px;
+      }
+    }
+  }
 }
 </style>

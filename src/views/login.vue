@@ -117,6 +117,7 @@ export default {
   background: #7e6ee3;
   border-radius: 50px;
   color: #fff;
+  border: none;
   font-size: 36px;
   font-weight: bold;
   position: absolute;
