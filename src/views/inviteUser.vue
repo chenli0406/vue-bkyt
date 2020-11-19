@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="code">
-      <img src="../assets/img/erweima.png" />
+      <img id="imageWrapper" src="../assets/img/erweima.png" />
     </div>
     <div class="save">
       <van-button class="primary-save" @click="onSave"> 长按保存 </van-button>
@@ -29,29 +29,53 @@
 
 <script>
 import clipboard from "../utils/clipboard";
+import html2canvas from "html2canvas";
 export default {
   data() {
     return {
-            code: "111111"
+      code: "111111"
     };
   },
   created() {},
   methods: {
-    onSave() {},
+    onSave() {
+      html2canvas(document.getElementById("imageWrapper")).then(canvas => {
+        let saveUrl = canvas.toDataURL("image/png");
+        let aLink = document.createElement("a");
+        let blob = this.base64ToBlob(saveUrl);
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("click", true, true);
+        aLink.download = "二维码.jpg";
+        aLink.href = URL.createObjectURL(blob);
+        aLink.click();
+      });
+    },
+    //这里把图片转base64
+    base64ToBlob(code) {
+      let parts = code.split(";base64,");
+      let contentType = parts[0].split(":")[1];
+      let raw = window.atob(parts[1]);
+      let rawLength = raw.length;
+      let uInt8Array = new Uint8Array(rawLength);
+      for (let i = 0; i < rawLength; ++i) {
+        uInt8Array[i] = raw.charCodeAt(i);
+      }
+      return new Blob([uInt8Array], { type: contentType });
+    },
     onCopyCode() {
       clipboard.handleClipboard(
         this.code,
         event,
         () => {
-          this.$toast('复制成功');
+          this.$toast("复制成功");
         },
         () => {
-          this.$toast('复制失败');
+          this.$toast("复制失败");
         }
       );
     },
-    onCopyLink() {},
-  },
+    onCopyLink() {}
+  }
 };
 </script>
 <style lang="scss" scoped>

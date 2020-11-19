@@ -1,130 +1,129 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import store from '@/store';
+import store from "@/store";
 Vue.use(VueRouter);
 
 const routes = [
-   // 首页
-   {
-    path: '/',
+  // 首页
+  {
+    path: "/",
     meta: {
       title: "首页"
     },
-    component: function (resolve) {
-      require(['@/views/index'], resolve)
+    component: function(resolve) {
+      require(["@/views/index"], resolve);
     }
   },
   // 我的
   {
-    path: '/My',
+    path: "/My",
     meta: {
       title: "我的"
     },
-    component: function (resolve) {
-      require(['@/views/my'], resolve)
+    component: function(resolve) {
+      require(["@/views/my"], resolve);
     }
   },
   // 登录
   {
-    path: '/Login',
+    path: "/Login",
     meta: {
       title: "登录"
     },
-    component: function (resolve) {
-      require(['@/views/login'], resolve)
+    component: function(resolve) {
+      require(["@/views/login"], resolve);
     }
   },
   // 注册
   {
-    path: '/Register',
+    path: "/Register",
     meta: {
       title: "注册"
     },
-    component: function (resolve) {
-      require(['@/views/register'], resolve)
+    component: function(resolve) {
+      require(["@/views/register"], resolve);
     }
   },
   // 设置
   {
-    path: '/Set',
+    path: "/Set",
     meta: {
       title: "设置"
     },
-    component: function (resolve) {
-      require(['@/views/set'], resolve)
+    component: function(resolve) {
+      require(["@/views/set"], resolve);
     }
   },
   // 商家开户
   {
-    path: '/MerchantFrom',
+    path: "/MerchantFrom",
     meta: {
       title: "商家开户"
     },
-    component: function (resolve) {
-      require(['@/views/merchantFrom'], resolve)
+    component: function(resolve) {
+      require(["@/views/merchantFrom"], resolve);
     }
   },
   // 审核进度
   {
-    path: '/Audit',
+    path: "/Audit",
     meta: {
       title: "审核进度"
     },
-    component: function (resolve) {
-      require(['@/views/audit'], resolve)
+    component: function(resolve) {
+      require(["@/views/audit"], resolve);
     }
   },
   // 我的钱包
   {
-    path: '/MyWallet',
+    path: "/MyWallet",
     meta: {
       title: "我的钱包"
     },
-    component: function (resolve) {
-      require(['@/views/myWallet'], resolve)
+    component: function(resolve) {
+      require(["@/views/myWallet"], resolve);
     }
   },
   // 邀请用户
   {
-    path: '/InviteUser',
+    path: "/InviteUser",
     meta: {
       title: "邀请用户"
     },
-    component: function (resolve) {
-      require(['@/views/inviteUser'], resolve)
+    component: function(resolve) {
+      require(["@/views/inviteUser"], resolve);
     }
   },
   // 完善个人资料
   {
-    path: '/PersonalData',
+    path: "/PersonalData",
     meta: {
       title: "完善个人资料"
     },
-    component: function (resolve) {
-      require(['@/views/personalData'], resolve)
+    component: function(resolve) {
+      require(["@/views/personalData"], resolve);
     }
   },
   // 商家详情
   {
-    path: '/MerchantDetails',
+    path: "/MerchantDetails",
     meta: {
       title: "商家详情"
     },
-    component: function (resolve) {
-      require(['@/views/merchantDetails'], resolve)
+    component: function(resolve) {
+      require(["@/views/merchantDetails"], resolve);
     }
   },
   // 个人主页
   {
-    path: '/PersonalHomePage',
+    path: "/PersonalHomePage",
     meta: {
       title: "个人主页"
     },
-    component: function (resolve) {
-      require(['@/views/personalHomePage'], resolve)
+    component: function(resolve) {
+      require(["@/views/personalHomePage"], resolve);
     }
-  },
-
+  }
 ];
 
 const router = new VueRouter({
@@ -135,13 +134,13 @@ router.beforeEach((to, form, next) => {
   if (to.meta && to.meta.title) {
     document.title = to.meta.title;
   }
-  if (to.path === '/') {
-    store.commit('setTabbarIndex', 0);
-  } else if (to.path === '/My') {
-    store.commit('setTabbarIndex', 1);
+  if (to.path === "/") {
+    store.commit("setTabbarIndex", 0);
+  } else if (to.path === "/My") {
+    store.commit("setTabbarIndex", 1);
   } else {
-    store.commit('setTabbarIndex', 2);
+    store.commit("setTabbarIndex", 2);
   }
   next();
-})
+});
 export default router;

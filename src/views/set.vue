@@ -56,19 +56,19 @@ export default {
   created() {},
   methods: {
     gotoPhone() {
-      this.$router.push('/Set');
+      this.$router.push("/Set");
     },
     gotoRealName() {
-      this.$router.push('/Set');
+      this.$router.push("/Set");
     },
     gotoFeedback() {
-      this.$router.push('/Set');
+      this.$router.push("/Set");
     },
     gotoAboutUs() {
-      this.$router.push('/Set');
+      this.$router.push("/Set");
     },
-    onClick() {},
-  },
+    onClick() {}
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -120,12 +120,5 @@ ul {
 .btn {
   padding: 20px 40px 0px 40px;
   float: right;
- 
 }
 </style>
-
-
-
-
-
-

@@ -1,5 +1,5 @@
-const autoprefixer = require('autoprefixer');
-const pxtorem = require('postcss-pxtorem');
+const autoprefixer = require("autoprefixer");
+const pxtorem = require("postcss-pxtorem");
 
 module.exports = {
   css: {
@@ -9,21 +9,21 @@ module.exports = {
           autoprefixer(),
           pxtorem({
             rootValue: 37.5,
-            propList: ['*'],
+            propList: ["*"]
           })
         ]
       }
     }
   },
-  chainWebpack: (config) => {
-    config.plugin('html').tap(args => {
-      args[0].title = '';
-      return args
+  chainWebpack: config => {
+    config.plugin("html").tap(args => {
+      args[0].title = "";
+      return args;
     });
-    config.plugins.delete('prefetch');
+    config.plugins.delete("prefetch");
   },
   devServer: {
     compress: true,
     disableHostCheck: true
-  },
-}
+  }
+};

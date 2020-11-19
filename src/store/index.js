@@ -5,12 +5,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    tabbarIndex: "",
+    tabbarIndex: ""
   },
   mutations: {
     setTabbarIndex(state, data) {
       state.tabbarIndex = data;
-    },
+    }
   },
   actions: {},
   modules: {}

@@ -3,14 +3,21 @@
     <van-tabs v-model="active" type="card" sticky>
       <van-tab title="审核中">
         <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
-          <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
+          <van-list
+            v-model="loading"
+            :finished="finished"
+            finished-text="没有更多了"
+            @load="onLoad"
+          >
             <div class="list-item" v-for="(item, index) in list" :key="index">
               <div class="list-item-center">
                 <div class="list-item-date">
                   <div style="color: #666666">
                     提交时间 <span>{{ item.date }}</span>
                   </div>
-                  <div style="color: #7e6ee3; font-weight: 500">{{ item.state }}</div>
+                  <div style="color: #7e6ee3; font-weight: 500">
+                    {{ item.state }}
+                  </div>
                 </div>
                 <h2>{{ item.title }}</h2>
                 <div class="list-item-bottom">
@@ -28,14 +35,25 @@
       </van-tab>
       <van-tab title="已通过">
         <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
-          <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-            <div class="list-item" v-for="(item, index) in passList" :key="index">
+          <van-list
+            v-model="loading"
+            :finished="finished"
+            finished-text="没有更多了"
+            @load="onLoad"
+          >
+            <div
+              class="list-item"
+              v-for="(item, index) in passList"
+              :key="index"
+            >
               <div class="list-item-center">
                 <div class="list-item-date">
                   <div style="color: #666666">
                     提交时间 <span>{{ item.date }}</span>
                   </div>
-                  <div style="color: #33c937; font-weight: 500">{{ item.state }}</div>
+                  <div style="color: #33c937; font-weight: 500">
+                    {{ item.state }}
+                  </div>
                 </div>
                 <h2>{{ item.title }}</h2>
                 <div class="list-item-bottom">
@@ -46,26 +64,39 @@
                     提交人：<span>{{ item.name }}</span>
                   </div>
                 </div>
-                 <div class="line"></div>
+                <div class="line"></div>
                 <div class="list-item-text">
                   <span>{{ item.content }}</span>
                 </div>
-                <div class="btn-box"><van-button class="copy-btn"> 复制此消息 </van-button></div>
+                <div class="btn-box">
+                  <van-button class="copy-btn"> 复制此消息 </van-button>
+                </div>
               </div>
             </div>
           </van-list>
         </van-pull-refresh>
       </van-tab>
-      <van-tab title="已拒绝"> 
+      <van-tab title="已拒绝">
         <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
-          <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-            <div class="list-item" v-for="(item, index) in passList" :key="index">
+          <van-list
+            v-model="loading"
+            :finished="finished"
+            finished-text="没有更多了"
+            @load="onLoad"
+          >
+            <div
+              class="list-item"
+              v-for="(item, index) in passList"
+              :key="index"
+            >
               <div class="list-item-center">
                 <div class="list-item-date">
                   <div style="color: #666666">
                     提交时间 <span>{{ item.date }}</span>
                   </div>
-                  <div style="color: #FF4B4B; font-weight: 500">{{ item.state }}</div>
+                  <div style="color: #FF4B4B; font-weight: 500">
+                    {{ item.state }}
+                  </div>
                 </div>
                 <h2>{{ item.title }}</h2>
                 <div class="list-item-bottom">
@@ -81,7 +112,11 @@
                   拒绝原因：
                   <span>{{ item.content }}</span>
                 </div>
-                <div class="btn-box"><van-button class="copy-btn" @click="copy(item.content)"> 复制此消息 </van-button></div>
+                <div class="btn-box">
+                  <van-button class="copy-btn" @click="copy(item.content)">
+                    复制此消息
+                  </van-button>
+                </div>
               </div>
             </div>
           </van-list>
@@ -98,63 +133,66 @@ export default {
       active: 0,
       list: [
         {
-          date: '2020-10-29  10:00:01',
-          title: '一乐拉面馆（环球店）',
-          state: '审核中',
-          type: '1111',
-          name: '哈哈哈',
+          date: "2020-10-29  10:00:01",
+          title: "一乐拉面馆（环球店）",
+          state: "审核中",
+          type: "1111",
+          name: "哈哈哈"
         },
         {
-          date: '2020-10-29  10:00:01',
-          title: '一乐拉面馆（环球店）',
-          state: '审核中',
-          type: '1111',
-          name: '哈哈哈',
+          date: "2020-10-29  10:00:01",
+          title: "一乐拉面馆（环球店）",
+          state: "审核中",
+          type: "1111",
+          name: "哈哈哈"
         },
         {
-          date: '2020-10-29  10:00:01',
-          title: '一乐拉面馆（环球店）',
-          state: '审核中',
-          type: '1111',
-          name: '哈哈哈',
+          date: "2020-10-29  10:00:01",
+          title: "一乐拉面馆（环球店）",
+          state: "审核中",
+          type: "1111",
+          name: "哈哈哈"
         },
         {
-          date: '2020-10-29  10:00:01',
-          title: '一乐拉面馆（环球店）',
-          state: '审核中',
-          type: '1111',
-          name: '哈哈哈',
-        },
+          date: "2020-10-29  10:00:01",
+          title: "一乐拉面馆（环球店）",
+          state: "审核中",
+          type: "1111",
+          name: "哈哈哈"
+        }
       ],
       passList: [
         {
-          date: '2020-10-29  10:00:01',
-          title: '一乐拉面馆（环球店）',
-          state: '审核中',
-          type: '1111',
-          name: '哈哈哈',
-          content: '商户后台登录地址：https://lanhuapp.com/url/tTsbL商户后台账号：123213123 商户后台登录地址：https://lanhuapp.com/url/tTsbL商户后台账号：12321312商户后台密码：123213123',
+          date: "2020-10-29  10:00:01",
+          title: "一乐拉面馆（环球店）",
+          state: "审核中",
+          type: "1111",
+          name: "哈哈哈",
+          content:
+            "商户后台登录地址：https://lanhuapp.com/url/tTsbL商户后台账号：123213123 商户后台登录地址：https://lanhuapp.com/url/tTsbL商户后台账号：12321312商户后台密码：123213123"
         },
         {
-          date: '2020-10-29  10:00:01',
-          title: '一乐拉面馆（环球店）',
-          state: '审核中',
-          type: '1111',
-          name: '哈哈哈',
-          content: '商户后台登录地址：https://lanhuapp.com/url/tTsbL商户后台账号：123213123 商户后台密码：123213123',
+          date: "2020-10-29  10:00:01",
+          title: "一乐拉面馆（环球店）",
+          state: "审核中",
+          type: "1111",
+          name: "哈哈哈",
+          content:
+            "商户后台登录地址：https://lanhuapp.com/url/tTsbL商户后台账号：123213123 商户后台密码：123213123"
         },
         {
-          date: '2020-10-29  10:00:01',
-          title: '一乐拉面馆（环球店）',
-          state: '审核中',
-          type: '1111',
-          name: '哈哈哈',
-          content: '商户后台登录地址：https://lanhuapp.com/url/tTsbL商户后台账号：123213123 商户后台密码：123213123',
-        },
+          date: "2020-10-29  10:00:01",
+          title: "一乐拉面馆（环球店）",
+          state: "审核中",
+          type: "1111",
+          name: "哈哈哈",
+          content:
+            "商户后台登录地址：https://lanhuapp.com/url/tTsbL商户后台账号：123213123 商户后台密码：123213123"
+        }
       ],
       loading: false,
       finished: false,
-      refreshing: false,
+      refreshing: false
     };
   },
   created() {},
@@ -187,12 +225,12 @@ export default {
       this.onLoad();
     },
     gotoDetails() {
-      this.$router.push('/Login');
+      this.$router.push("/Login");
     },
-    copy(val){
-        console.log(val);
+    copy(val) {
+      console.log(val);
     }
-  },
+  }
 };
 </script>
 <style>
@@ -230,7 +268,6 @@ export default {
   background-color: transparent;
   height: 70px;
   margin: 30px;
-  
 }
 </style>
 <style lang="scss" scoped>
@@ -291,7 +328,7 @@ export default {
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
-.line{
+.line {
   width: 100%;
   height: 1px;
   margin: 20px 0;

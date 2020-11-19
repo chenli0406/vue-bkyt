@@ -5,7 +5,12 @@
         <van-image width="100%" height="100%" fit="cover" :src="bgImgPath" />
       </div>
       <div class="img-btn">
-        <div :class="activeClass == index?'active':''" v-for="(item, index) in imgData" :key="index" @click="onChangeBg(item.bigImg, index)">
+        <div
+          :class="activeClass == index ? 'active' : ''"
+          v-for="(item, index) in imgData"
+          :key="index"
+          @click="onChangeBg(item.bigImg, index)"
+        >
           <img :src="item.img" />
         </div>
       </div>
@@ -15,7 +20,9 @@
       <div class="infor-item">
         <div class="tip">
           <div class="imgbox"><img src="../assets/img/svip.png" /></div>
-          <div class="sexbox" style="z-index: 1"><img src="../assets/img/woman.png" /></div>
+          <div class="sexbox" style="z-index: 1">
+            <img src="../assets/img/woman.png" />
+          </div>
           <div class="age">19岁</div>
           <div class="grade">王者</div>
         </div>
@@ -75,22 +82,22 @@
 export default {
   data() {
     return {
-      bgImgPath: '',
+      bgImgPath: "",
       activeClass: 0,
       imgData: [
         {
-          img: require('@/assets/img/head-1.png'),
-          bigImg: require('@/assets/img/head-big.png'),
+          img: require("@/assets/img/head-1.png"),
+          bigImg: require("@/assets/img/head-big.png")
         },
         {
-          img: require('@/assets/img/head-2.png'),
-          bigImg: 'https://img.yzcdn.cn/vant/cat.jpeg',
+          img: require("@/assets/img/head-2.png"),
+          bigImg: "https://img.yzcdn.cn/vant/cat.jpeg"
         },
         {
-          img: require('@/assets/img/myWallet-1.png'),
-          bigImg: require('@/assets/img/myWallet-bg.png'),
-        },
-      ],
+          img: require("@/assets/img/myWallet-1.png"),
+          bigImg: require("@/assets/img/myWallet-bg.png")
+        }
+      ]
     };
   },
   created() {
@@ -100,8 +107,8 @@ export default {
     onChangeBg(val, index) {
       this.bgImgPath = val;
       this.activeClass = index;
-    },
-  },
+    }
+  }
 };
 </script>
 <style>
@@ -272,9 +279,3 @@ export default {
   }
 }
 </style>
-
-
-
-
-
-

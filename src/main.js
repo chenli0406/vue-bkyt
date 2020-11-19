@@ -3,9 +3,29 @@ import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
-import {Image as VanImage,List, Lazyload, PullRefresh, Toast, Rate, Skeleton, Image, Icon, Checkbox, Dialog, Field, Button, Tabs, Tab, Empty ,Tabbar, TabbarItem} from 'vant';
-import 'vant/lib/index.css';
-import Vant from 'vant';
+import {
+  Image as VanImage,
+  List,
+  ActionSheet,
+  Lazyload,
+  PullRefresh,
+  Toast,
+  Rate,
+  Skeleton,
+  Image,
+  Icon,
+  Checkbox,
+  Dialog,
+  Field,
+  Button,
+  Tabs,
+  Tab,
+  Empty,
+  Tabbar,
+  TabbarItem
+} from "vant";
+import "vant/lib/index.css";
+import Vant from "vant";
 Vue.config.productionTip = false;
 Vue.use(Vant);
 Vue.use(Toast);
@@ -26,6 +46,7 @@ Vue.use(TabbarItem);
 Vue.use(PullRefresh);
 Vue.use(VanImage);
 Vue.use(Lazyload);
+Vue.use(ActionSheet);
 new Vue({
   router,
   store,

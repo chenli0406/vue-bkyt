@@ -4,10 +4,14 @@
     <div class="form">
       <div class="uploader-box">
         <label>头像</label>
-         <van-uploader v-model="fileList"  max-count="1"/>
+        <van-uploader v-model="fileList" max-count="1" />
       </div>
       <label>昵称</label>
-      <van-field v-model="form.nickname" maxlength="11" placeholder="请输入昵称" />
+      <van-field
+        v-model="form.nickname"
+        maxlength="11"
+        placeholder="请输入昵称"
+      />
     </div>
 
     <div class="bottom">
@@ -17,15 +21,15 @@
 </template>
 
 <script>
-import { isEmpty } from 'class-validator';
+import { isEmpty } from "class-validator";
 export default {
   data() {
     return {
-     fileList: [],
+      fileList: [],
       form: {
-        headImage: '',
-        nickname: '',
-      },
+        headImage: "",
+        nickname: ""
+      }
     };
   },
   created() {},
@@ -36,31 +40,31 @@ export default {
       //   return;
       // }
       if (isEmpty(this.form.nickname)) {
-        this.$toast('请输入昵称');
+        this.$toast("请输入昵称");
         return;
       }
       return false;
-    },
-  },
+    }
+  }
 };
 </script>
 <style>
-.van-uploader__upload{
-  border-radius: 50%!important;
+.van-uploader__upload {
+  border-radius: 50% !important;
   width: 180px;
   height: 180px;
 }
-.van-uploader__preview-image{
-   width: 180px;
+.van-uploader__preview-image {
+  width: 180px;
   height: 180px;
 }
-.van-image__img{
+.van-image__img {
   height: auto;
 }
-.van-uploader__preview-delete{
- background-color: transparent;
+.van-uploader__preview-delete {
+  background-color: transparent;
 }
-.van-icon-cross::before{
+.van-icon-cross::before {
   color: #000;
 }
 </style>
@@ -125,18 +129,12 @@ label {
   color: #000000;
   line-height: 60px;
 }
-.uploader-box{
+.uploader-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
   padding: 20px 0;
-  border-bottom: 0.02rem solid #EEEEEE;
+  border-bottom: 0.02rem solid #eeeeee;
 }
 </style>
-
-
-
-
-
-

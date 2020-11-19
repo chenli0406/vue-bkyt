@@ -2,17 +2,35 @@
   <div class="content">
     <div>
       <label>手机号</label>
-      <van-field v-model="form.mobile" type="number" maxlength="11" placeholder="请输入手机号码" />
+      <van-field
+        v-model="form.mobile"
+        type="number"
+        maxlength="11"
+        placeholder="请输入手机号码"
+      />
       <label>验证码</label>
-      <van-field v-model="form.code" type="digit" maxlength="6" placeholder="请输入六位验证码">
+      <van-field
+        v-model="form.code"
+        type="digit"
+        maxlength="6"
+        placeholder="请输入六位验证码"
+      >
         <template #button>
-          <van-button class="sendbtn" :class="isSendCode ? 'disable' : ''" @click="onSendCode">
-            {{ isSendCode ? '已发送' + codeTime : '获取验证码' }}
+          <van-button
+            class="sendbtn"
+            :class="isSendCode ? 'disable' : ''"
+            @click="onSendCode"
+          >
+            {{ isSendCode ? "已发送" + codeTime : "获取验证码" }}
           </van-button>
         </template>
       </van-field>
       <label>邀请码</label>
-      <van-field v-model="form.invitation" maxlength="11" placeholder="请输入邀请码" />
+      <van-field
+        v-model="form.invitation"
+        maxlength="11"
+        placeholder="请输入邀请码"
+      />
     </div>
 
     <div class="bottom">
@@ -22,39 +40,39 @@
 </template>
 
 <script>
-import { isEmpty, isMobilePhone } from 'class-validator';
+import { isEmpty, isMobilePhone } from "class-validator";
 export default {
   data() {
     return {
       form: {
-        mobile: '',
-        code: '',
-        invitation: '',
+        mobile: "",
+        code: "",
+        invitation: ""
       },
       isSendCode: false,
       codeTime: 0,
-      aVisiable: false,
+      aVisiable: false
     };
   },
   created() {},
   methods: {
     onClick() {
-      if (!isMobilePhone(this.form.mobile, 'zh-CN')) {
-        this.$toast('请输入有效手机号');
+      if (!isMobilePhone(this.form.mobile, "zh-CN")) {
+        this.$toast("请输入有效手机号");
         return;
       }
       if (isEmpty(this.form.code)) {
-        this.$toast('请输入短信验证码');
+        this.$toast("请输入短信验证码");
         return;
       }
       if (isEmpty(this.form.invitation)) {
-        this.$toast('请输入邀请码');
+        this.$toast("请输入邀请码");
         return;
       }
       return false;
     },
-    onSendCode() {},
-  },
+    onSendCode() {}
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -116,9 +134,3 @@ label {
   line-height: 60px;
 }
 </style>
-
-
-
-
-
-

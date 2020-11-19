@@ -9,7 +9,12 @@
     </div>
     <div class="menu">
       <div class="menu-item" v-for="(item, index) in list" :key="index">
-        <van-image round width="56px" :src="item.imgPath" @click="gotoMenu(item.url)">
+        <van-image
+          round
+          width="56px"
+          :src="item.imgPath"
+          @click="gotoMenu(item.url)"
+        >
           <template v-slot:loading>
             <van-loading type="spinner" size="20" />
           </template>
@@ -27,21 +32,21 @@ export default {
     return {
       list: [
         {
-          url: '/MyWallet',
-          imgPath: require('@/assets/img/myWallet-1.png'),
-          title: '收入明细',
+          url: "/MyWallet",
+          imgPath: require("@/assets/img/myWallet-1.png"),
+          title: "收入明细"
         },
         {
-          url: '/InviteUser',
-          imgPath: require('@/assets/img/myWallet-2.png'),
-          title: '提现明细',
+          url: "/InviteUser",
+          imgPath: require("@/assets/img/myWallet-2.png"),
+          title: "提现明细"
         },
         {
-          url: '/MerchantFrom',
-          imgPath: require('@/assets/img/myWallet-3.png'),
-          title: '提现账号管理',
-        },
-      ],
+          url: "/MerchantFrom",
+          imgPath: require("@/assets/img/myWallet-3.png"),
+          title: "提现账号管理"
+        }
+      ]
     };
   },
   created() {},
@@ -50,13 +55,13 @@ export default {
       this.$router.push(val);
     },
     gotoPersonal() {
-      this.$router.push('/PersonalHomePage');
+      this.$router.push("/PersonalHomePage");
     },
     gotoSet() {
-      this.$router.push('/Set');
+      this.$router.push("/Set");
     },
-    onClick() {},
-  },
+    onClick() {}
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -65,7 +70,7 @@ export default {
   overflow: hidden;
   background-color: #fff;
   .box {
-    background: url('../assets/img/myWallet-bg.png');
+    background: url("../assets/img/myWallet-bg.png");
     background-size: 100% 100%;
     height: 20vh;
     color: #ffffff;
@@ -74,7 +79,7 @@ export default {
     align-items: center;
     margin: 40px 40px 0px 40px;
     .box-content {
-       text-align: center;
+      text-align: center;
       .title {
         font-weight: 400;
         line-height: 40px;
@@ -106,15 +111,9 @@ export default {
         margin: 10px 0;
         font-size: 14px;
         font-weight: 500;
-        color: #3B424C;
+        color: #3b424c;
       }
     }
   }
 }
 </style>
-
-
-
-
-
-
