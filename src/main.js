@@ -22,7 +22,9 @@ import {
   Tab,
   Empty,
   Tabbar,
-  TabbarItem
+  TabbarItem,
+  Sticky,
+  Form
 } from "vant";
 import "vant/lib/index.css";
 import Vant from "vant";
@@ -47,6 +49,8 @@ Vue.use(PullRefresh);
 Vue.use(VanImage);
 Vue.use(Lazyload);
 Vue.use(ActionSheet);
+Vue.use(Sticky);
+Vue.use(Form);
 new Vue({
   router,
   store,

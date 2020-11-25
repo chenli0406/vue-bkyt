@@ -233,43 +233,6 @@ export default {
   }
 };
 </script>
-<style>
-.van-tabs--card > .van-tabs__wrap {
-  height: 70px !important;
-}
-.van-tabs__wrap {
-  background: #f9fafc;
-}
-.van-tabs__nav--card {
-  border: none !important;
-}
-.van-tabs__nav--card .van-tab.van-tab--active {
-  color: #fff !important;
-  background-color: #7e6ee3 !important;
-  border-radius: 34px;
-  font-size: 28px;
-  font-weight: 600;
-  width: 200px !important;
-}
-.van-tab {
-  color: #666666 !important;
-  height: 70px;
-  line-height: 70px;
-  font-size: 28px;
-  font-weight: 600;
-}
-.van-tabs__nav--card .van-tab {
-  border-right: none;
-}
-.van-tabs {
-  height: 100%;
-}
-.van-tabs__nav {
-  background-color: transparent;
-  height: 70px;
-  margin: 30px;
-}
-</style>
 <style lang="scss" scoped>
 .content {
   height: 100%;
@@ -333,5 +296,41 @@ export default {
   height: 1px;
   margin: 20px 0;
   background-color: #eee;
+}
+
+::v-deep .van-tabs--card > .van-tabs__wrap {
+  height: 70px !important;
+}
+::v-deep .van-tabs__wrap {
+  background: #f9fafc;
+}
+::v-deep .van-tabs__nav--card {
+  border: none !important;
+}
+::v-deep .van-tabs__nav--card .van-tab.van-tab--active {
+  color: #fff !important;
+  background-color: #7e6ee3 !important;
+  border-radius: 34px;
+  font-size: 28px;
+  font-weight: 600;
+  width: 200px !important;
+}
+::v-deep .van-tab {
+  color: #666666 !important;
+  height: 70px;
+  line-height: 70px;
+  font-size: 28px;
+  font-weight: 600;
+}
+::v-deep .van-tabs__nav--card .van-tab {
+  border-right: none;
+}
+::v-deep .van-tabs {
+  height: 100%;
+}
+::v-deep .van-tabs__nav {
+  background-color: transparent;
+  height: 70px;
+  margin: 30px;
 }
 </style>

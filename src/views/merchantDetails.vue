@@ -14,7 +14,7 @@
           <div>
             <img src="../assets/icons/call.png" />
             <!-- <span>联系商家</span> -->
-            <a href="tel:123456">联系商家</a>
+            <a style="margin-left: 10px; color: #000" href="tel:123456">联系商家</a>
           </div>
         </div>
         <div class="infor-item">
@@ -26,30 +26,15 @@
           <div>距您1.5KM</div>
         </div>
       </div>
-      <div class="tab_wrap">
-        <div
-          class="tab_item"
-          :class="{ tab_active: tab == 1 }"
-          @click="tab = 1"
-        >
-          商家优惠(2)
-        </div>
-        <div
-          class="tab_item"
-          :class="{ tab_active: tab == 2 }"
-          @click="tab = 2"
-        >
-          商家评价(3)
-        </div>
-      </div>
-      <div class="line"></div>
+      <van-sticky>
+        <div class="tab_wrap" :offset-top="30">
+            <div class="tab_item" :class="{ tab_active: tab == 1 }" @click="tab = 1">商家优惠(2)</div>
+            <div class="tab_item" :class="{ tab_active: tab == 2 }" @click="tab = 2">商家评价(3)</div>
+       </div>
+      </van-sticky>
       <div class="list_wrap">
         <div v-show="tab == 1" class="invite-content">
-          <div
-            class="invite-item"
-            v-for="(item, index) in listitem"
-            :key="index"
-          >
+          <div class="invite-item" v-for="(item, index) in listitem" :key="index">
             <van-row>
               <van-col span="6"
                 ><div class="invite-img">
@@ -70,20 +55,12 @@
                   </div>
                 </div>
               </van-col>
-              <van-col style="line-height: 60px" span="4">
-                <van-button class="primary" @click="onClick"
-                  >抢购</van-button
-                ></van-col
-              >
+              <van-col style="line-height: 60px" span="4"> <van-button class="primary" @click="onClick">抢购</van-button></van-col>
             </van-row>
           </div>
         </div>
         <div v-show="tab == 2" class="evaluate-content">
-          <div
-            class="evaluate-item"
-            v-for="(item, index) in options"
-            :key="index"
-          >
+          <div class="evaluate-item" v-for="(item, index) in options" :key="index">
             <div class="evaluate-box">
               <van-image round width="60px" height="60px" :src="item.imgPath">
                 <template v-slot:loading>
@@ -129,133 +106,97 @@ export default {
   data() {
     return {
       tab: 1,
-      images: [
-        "https://img.yzcdn.cn/vant/cat.jpeg",
-        require("@/assets/img/swipe-img.png")
-      ],
+      images: ['https://img.yzcdn.cn/vant/cat.jpeg', require('@/assets/img/swipe-img.png')],
       listitem: [
         {
-          imgPath: require("@/assets/img/2.png"),
-          title: "满减券",
-          price: "100元/人",
-          address: "满10000减1元",
-          num: "1000人购买"
+          imgPath: require('@/assets/img/2.png'),
+          title: '满减券',
+          price: '100元/人',
+          address: '满10000减1元',
+          num: '1000人购买',
         },
         {
-          imgPath: require("@/assets/img/3.png"),
-          title: "抵用券",
-          price: "100元/人",
-          address: "满10000减1元",
-          num: "1000人购买"
+          imgPath: require('@/assets/img/3.png'),
+          title: '抵用券',
+          price: '100元/人',
+          address: '满10000减1元',
+          num: '1000人购买',
         },
         {
-          imgPath: require("@/assets/img/head-1.png"),
-          title: "抵用券",
-          price: "100元/人",
-          address: "满10000减1元",
-          num: "1000人购买"
+          imgPath: require('@/assets/img/head-1.png'),
+          title: '抵用券',
+          price: '100元/人',
+          address: '满10000减1元',
+          num: '1000人购买',
         },
-        {
-          imgPath: require("@/assets/img/3.png"),
-          title: "抵用券",
-          price: "100元/人",
-          address: "满10000减1元",
-          num: "1000人购买"
+          {
+          imgPath: require('@/assets/img/head-1.png'),
+          title: '抵用券',
+          price: '100元/人',
+          address: '满10000减1元',
+          num: '1000人购买',
         },
-        {
-          imgPath: require("@/assets/img/3.png"),
-          title: "抵用券",
-          price: "100元/人",
-          address: "满10000减1元",
-          num: "1000人购买"
-        },
-        {
-          imgPath: require("@/assets/img/3.png"),
-          title: "抵用券",
-          price: "100元/人",
-          address: "满10000减1元",
-          num: "1000人购买"
-        },
-        {
-          imgPath: require("@/assets/img/3.png"),
-          title: "抵用券",
-          price: "100元/人",
-          address: "满10000减1元",
-          num: "1000人购买"
-        }
+        
+        
       ],
       options: [
         {
-          imgPath: "https://img.yzcdn.cn/vant/cat.jpeg",
-          name: "鬼灯的冷彻",
+          imgPath: 'https://img.yzcdn.cn/vant/cat.jpeg',
+          name: '鬼灯的冷彻',
           sex: 1,
-          age: "23",
-          grade: "白银3",
-          date: "10月19日",
-          content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
-          list: [
-            "https://img.yzcdn.cn/vant/cat.jpeg",
-            require("@/assets/img/swipe-img.png"),
-            require("@/assets/img/myWallet-2.png"),
-            require("@/assets/img/2.png"),
-            require("@/assets/img/3.png")
-          ]
+          age: '23',
+          grade: '白银3',
+          date: '10月19日',
+          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.',
+          list: ['https://img.yzcdn.cn/vant/cat.jpeg', require('@/assets/img/swipe-img.png'), require('@/assets/img/myWallet-2.png'), require('@/assets/img/2.png'), require('@/assets/img/3.png')],
         },
         {
-          imgPath: "https://img.yzcdn.cn/vant/cat.jpeg",
-          name: "鬼灯的冷彻",
+          imgPath: 'https://img.yzcdn.cn/vant/cat.jpeg',
+          name: '鬼灯的冷彻',
           sex: 1,
-          age: "23",
-          grade: "白银3",
-          date: "10月19日",
-          content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
-          list: ["https://img.yzcdn.cn/vant/cat.jpeg"]
+          age: '23',
+          grade: '白银3',
+          date: '10月19日',
+          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.',
+          list: ['https://img.yzcdn.cn/vant/cat.jpeg'],
         },
         {
-          imgPath: "https://img.yzcdn.cn/vant/cat.jpeg",
-          name: "鬼灯的冷彻",
+          imgPath: 'https://img.yzcdn.cn/vant/cat.jpeg',
+          name: '鬼灯的冷彻',
           sex: 1,
-          age: "23",
-          grade: "白银3",
-          date: "10月19日",
-          content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
-          list: ["https://img.yzcdn.cn/vant/cat.jpeg"]
+          age: '23',
+          grade: '白银3',
+          date: '10月19日',
+          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.',
+          list: ['https://img.yzcdn.cn/vant/cat.jpeg'],
         },
         {
-          imgPath: "https://img.yzcdn.cn/vant/cat.jpeg",
-          name: "鬼灯的冷彻",
+          imgPath: 'https://img.yzcdn.cn/vant/cat.jpeg',
+          name: '鬼灯的冷彻',
           sex: 1,
-          age: "23",
-          grade: "白银3",
-          date: "10月19日",
-          content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
-          list: []
+          age: '23',
+          grade: '白银3',
+          date: '10月19日',
+          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.',
+          list: [],
         },
         {
-          imgPath: "https://img.yzcdn.cn/vant/cat.jpeg",
-          name: "鬼灯的冷彻",
+          imgPath: 'https://img.yzcdn.cn/vant/cat.jpeg',
+          name: '鬼灯的冷彻',
           sex: 1,
-          age: "23",
-          grade: "白银3",
-          date: "10月19日",
-          content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
-          list: [
-            require("@/assets/img/swipe-img.png"),
-            "https://img.yzcdn.cn/vant/cat.jpeg"
-          ]
-        }
-      ]
+          age: '23',
+          grade: '白银3',
+          date: '10月19日',
+          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.',
+          list: [require('@/assets/img/swipe-img.png'), 'https://img.yzcdn.cn/vant/cat.jpeg'],
+        },
+      ],
     };
   },
   created() {},
   methods: {
-    onClick() {}
-  }
+    onClick() {},
+  },
 };
 </script>
 <style>
@@ -280,8 +221,6 @@ export default {
 </style>
 <style lang="scss" scoped>
 .content {
-  height: 100vh;
-  overflow: hidden;
   .head-portrait {
     padding: 40px;
     height: 30vh;
@@ -292,7 +231,6 @@ export default {
     }
   }
   .infor {
-    height: 70vh;
     width: 100%;
     margin-top: 10px;
     background: #ffffff;
@@ -367,11 +305,13 @@ export default {
   }
 }
 .tab_wrap {
-  width: 94%;
+  width: 100%;
   display: flex;
   align-items: center;
-  padding: 10px 40px 20px 40px;
+  padding: 20px 0px;
   margin: 0 auto;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
 }
 .tab_wrap .tab_item {
   height: 100%;
@@ -394,8 +334,7 @@ export default {
 }
 
 .list_wrap {
-  overflow-y: scroll;
-  height: 42vh;
+  padding-bottom: 100px;
 }
 .invite-content {
   padding: 0px 40px;

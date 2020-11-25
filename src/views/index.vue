@@ -4,18 +4,8 @@
       <van-tab title="邀请的用户(11)">
         <div class="tab-content">
           <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
-            <van-list
-              v-model="loading"
-              :finished="finished"
-              finished-text="没有更多了"
-              @load="onLoad"
-            >
-              <div
-                class="list-item"
-                v-for="(item, index) in list"
-                :key="index"
-                @click="gotoDetails"
-              >
+            <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
+              <div class="list-item" v-for="(item, index) in list" :key="index" @click="gotoDetails">
                 <van-image round width="60px" height="60px" :src="item.imgPath">
                   <template v-slot:loading>
                     <van-loading type="spinner" size="20" />
@@ -47,12 +37,7 @@
       <van-tab title="邀请的商户">
         <div class="invite-content">
           <van-list>
-            <div
-              class="invite-item"
-              v-for="(item, index) in listitem"
-              :key="index"
-              @click="gotoMerchant"
-            >
+            <div class="invite-item" v-for="(item, index) in listitem" :key="index" @click="gotoMerchant">
               <!-- <van-image  fit="contain" width="100px" height="100px" :src="item.imgPath">
                 <template v-slot:loading>
                   <van-loading type="spinner" size="20" />
@@ -92,13 +77,7 @@
         <div class="sheet-content">
           <p>商家类型</p>
           <ul>
-            <li
-              
-              class="li"
-              v-for="(item, index) in options"
-              :key="index"
-              @click="onSelectitem($event, item.id)"
-            >
+            <li class="li" v-for="(item, index) in options" :key="index" @click="onSelectitem($event, item.id)">
               {{ item.title }}
             </li>
           </ul>
@@ -117,142 +96,141 @@ export default {
       show: false,
       list: [
         {
-          imgPath: require("@/assets/img/2.png"),
-          title: "大王叫我来巡山",
+          imgPath: require('@/assets/img/2.png'),
+          title: '大王叫我来巡山',
           sex: 1,
-          age: "19",
-          grade: "王者"
+          age: '19',
+          grade: '王者',
         },
         {
-          imgPath: require("@/assets/img/2.png"),
-          title: "鬼灯的冷彻",
+          imgPath: require('@/assets/img/2.png'),
+          title: '鬼灯的冷彻',
           sex: 0,
-          age: "21",
-          grade: "钻石1"
+          age: '21',
+          grade: '钻石1',
         },
         {
-          imgPath: require("@/assets/img/2.png"),
-          title: "大王叫我来巡山",
+          imgPath: require('@/assets/img/2.png'),
+          title: '大王叫我来巡山',
           sex: 1,
-          age: "19",
-          grade: "王者"
+          age: '19',
+          grade: '王者',
         },
         {
-          imgPath: require("@/assets/img/2.png"),
-          title: "大王叫我来巡山",
+          imgPath: require('@/assets/img/2.png'),
+          title: '大王叫我来巡山',
           sex: 0,
-          age: "19",
-          grade: "王者"
+          age: '19',
+          grade: '王者',
         },
         {
-          imgPath: require("@/assets/img/2.png"),
-          title: "大王叫我来巡山",
+          imgPath: require('@/assets/img/2.png'),
+          title: '大王叫我来巡山',
           sex: 1,
-          age: "19",
-          grade: "王者"
+          age: '19',
+          grade: '王者',
         },
         {
-          imgPath: require("@/assets/img/2.png"),
-          title: "大王叫我来巡山",
+          imgPath: require('@/assets/img/2.png'),
+          title: '大王叫我来巡山',
           sex: 0,
-          age: "19",
-          grade: "王者"
+          age: '19',
+          grade: '王者',
         },
         {
-          imgPath: require("@/assets/img/2.png"),
-          title: "大王叫我来巡山",
+          imgPath: require('@/assets/img/2.png'),
+          title: '大王叫我来巡山',
           sex: 1,
-          age: "19",
-          grade: "王者"
+          age: '19',
+          grade: '王者',
         },
         {
-          imgPath: require("@/assets/img/2.png"),
-          title: "大王叫我来巡山",
+          imgPath: require('@/assets/img/2.png'),
+          title: '大王叫我来巡山',
           sex: 0,
-          age: "19",
-          grade: "王者"
-        }
+          age: '19',
+          grade: '王者',
+        },
       ],
       loading: false,
       finished: false,
       refreshing: false,
       listitem: [
         {
-          imgPath: require("@/assets/img/2.png"),
-          title: "安定区咖啡厅(环球店)",
-          price: "100元/人",
-          type: "川菜中餐",
-          address: "成都武侯区长白路因之街25号...",
-          num: "1.5KM"
+          imgPath: require('@/assets/img/2.png'),
+          title: '安定区咖啡厅(环球店)',
+          price: '100元/人',
+          type: '川菜中餐',
+          address: '成都武侯区长白路因之街25号...',
+          num: '1.5KM',
         },
         {
-          imgPath: require("@/assets/img/3.png"),
-          title: "安定区咖啡厅(环球店)",
-          price: "100元/人",
-          type: "川菜中餐",
-          address:
-            "成都武侯区长白路因成都武侯区长白路因成都武侯区长白路因之街25号...",
-          num: "1.5KM"
+          imgPath: require('@/assets/img/3.png'),
+          title: '安定区咖啡厅(环球店)',
+          price: '100元/人',
+          type: '川菜中餐',
+          address: '成都武侯区长白路因成都武侯区长白路因成都武侯区长白路因之街25号...',
+          num: '1.5KM',
         },
         {
-          imgPath: require("@/assets/img/head-1.png"),
-          title: "安定区咖啡厅(环球店)",
-          price: "100元/人",
-          type: "川菜中餐",
-          address: "成都武侯区长白路因之街25号...",
-          num: "1.5KM"
+          imgPath: require('@/assets/img/head-1.png'),
+          title: '安定区咖啡厅(环球店)',
+          price: '100元/人',
+          type: '川菜中餐',
+          address: '成都武侯区长白路因之街25号...',
+          num: '1.5KM',
         },
         {
-          imgPath: require("@/assets/img/3.png"),
-          title: "安定区咖啡厅(环球店)",
-          price: "100元/人",
-          type: "川菜中餐",
-          address: "成都武侯区长白路因之街25号...",
-          num: "1.5KM"
+          imgPath: require('@/assets/img/3.png'),
+          title: '安定区咖啡厅(环球店)',
+          price: '100元/人',
+          type: '川菜中餐',
+          address: '成都武侯区长白路因之街25号...',
+          num: '1.5KM',
         },
         {
-          imgPath: require("@/assets/img/3.png"),
-          title: "安定区咖啡厅(环球店)",
-          price: "100元/人",
-          type: "川菜中餐",
-          address: "成都武侯区长白路因之街25号...",
-          num: "1.5KM"
+          imgPath: require('@/assets/img/3.png'),
+          title: '安定区咖啡厅(环球店)',
+          price: '100元/人',
+          type: '川菜中餐',
+          address: '成都武侯区长白路因之街25号...',
+          num: '1.5KM',
         },
         {
-          imgPath: require("@/assets/img/3.png"),
-          title: "安定区咖啡厅(环球店)",
-          price: "100元/人",
-          type: "川菜中餐",
-          address: "成都武侯区长白路因之街25号...",
-          num: "1.5KM"
+          imgPath: require('@/assets/img/3.png'),
+          title: '安定区咖啡厅(环球店)',
+          price: '100元/人',
+          type: '川菜中餐',
+          address: '成都武侯区长白路因之街25号...',
+          num: '1.5KM',
         },
         {
-          imgPath: require("@/assets/img/3.png"),
-          title: "安定区咖啡厅(环球店)",
-          price: "100元/人",
-          type: "川菜中餐",
-          address: "成都武侯区长白路因之街25号...",
-          num: "1.5KM"
-        }
+          imgPath: require('@/assets/img/3.png'),
+          title: '安定区咖啡厅(环球店)',
+          price: '100元/人',
+          type: '川菜中餐',
+          address: '成都武侯区长白路因之街25号...',
+          num: '1.5KM',
+        },
       ],
       options: [
         {
-          id: "1",
-          title: "日韩料理"
+          id: '1',
+          title: '日韩料理',
         },
         {
-          id: "2",
-          title: "日韩料理"
+          id: '2',
+          title: '日韩料理',
         },
         {
-          id: "3",
-          title: "日韩料理"
+          id: '3',
+          title: '日韩料理',
         },
         {
-          id: "4",
-          title: "日韩料理"
-        }
-      ]
+          id: '4',
+          title: '日韩料理',
+        },
+      ],
     };
   },
   created() {},
@@ -285,10 +263,10 @@ export default {
       this.onLoad();
     },
     gotoDetails() {
-      this.$router.push("/PersonalHomePage");
+      this.$router.push('/PersonalHomePage');
     },
     gotoMerchant() {
-      this.$router.push("/MerchantDetails");
+      this.$router.push('/MerchantDetails');
     },
     goDialog() {
       this.show = true;
@@ -297,67 +275,25 @@ export default {
       this.show = false;
     },
     onSelectitem(e, val) {
-      if (e.target.className.indexOf("checked") == -1) {
-        e.target.className = "li checked";
+      if (e.target.className.indexOf('checked') == -1) {
+        e.target.className = 'li checked';
         console.log(val);
       } else {
-        e.target.className = "li";
+        e.target.className = 'li';
       }
     },
-    onClear(){
-      
-    }
-  }
+    // 重置
+    onClear() {
+      this.$nextTick(() => {
+        let name = document.querySelectorAll('.checked');
+        for (let i = 0; i < name.length; i++) {
+          name[i].className = 'li';
+        }
+      });
+    },
+  },
 };
 </script>
-<style>
-.van-tabs--card > .van-tabs__wrap {
-  height: 70px !important;
-}
-.van-tabs__wrap {
-  background: #f9fafc;
-}
-.van-tabs__nav--card {
-  border: none !important;
-}
-.van-tabs__nav--card .van-tab.van-tab--active {
-  color: #fff !important;
-  background-color: #7e6ee3 !important;
-  border-radius: 34px;
-  font-size: 28px;
-  font-weight: 600;
-  width: 300px !important;
-}
-.van-tab {
-  color: #666666 !important;
-  height: 70px;
-  line-height: 70px;
-  font-size: 28px;
-  font-weight: 600;
-}
-.van-tabs__nav--card .van-tab {
-  border-right: none;
-}
-.van-tabs {
-  height: 100%;
-}
-.tab-content {
-  margin-top: 40px;
-  background: #ffffff;
-  border-radius: 80px 80px 0px 0px;
-  padding: 40px;
-  padding-bottom: 140px;
-}
-.van-tabs__nav {
-  background-color: transparent;
-  height: 70px;
-  margin: 30px auto;
-  width: 70%;
-}
-.van-overlay {
-  background-color: rgba(0, 0, 0, 0.26);
-}
-</style>
 <style lang="scss" scoped>
 .content {
   height: 100%;
@@ -539,12 +475,11 @@ export default {
       }
     }
   }
-  .clear{
+  .clear {
     position: absolute;
     top: 40px;
     right: 80px;
     font-size: 26px;
-    
   }
 }
 .van-popup--bottom.van-popup--round {
@@ -556,5 +491,52 @@ export default {
   font-size: 30px;
   font-weight: 500;
   color: #000000;
+}
+
+::v-deep .van-tabs--card > .van-tabs__wrap {
+  height: 70px !important;
+}
+::v-deep .van-tabs__wrap {
+  background: #f9fafc;
+}
+::v-deep .van-tabs__nav--card {
+  border: none !important;
+}
+::v-deep .van-tabs__nav--card .van-tab.van-tab--active {
+  color: #fff !important;
+  background-color: #7e6ee3 !important;
+  border-radius: 34px;
+  font-size: 28px;
+  font-weight: 600;
+  width: 300px !important;
+}
+::v-deep .van-tab {
+  color: #666666 !important;
+  height: 70px;
+  line-height: 70px;
+  font-size: 28px;
+  font-weight: 600;
+}
+::v-deep .van-tabs__nav--card .van-tab {
+  border-right: none;
+}
+::v-deep .van-tabs {
+  height: 100%;
+}
+::v-deep .tab-content {
+  margin-top: 40px;
+  background: #ffffff;
+  border-radius: 80px 80px 0px 0px;
+  padding: 40px;
+  padding-bottom: 140px;
+}
+::v-deep .van-tabs__nav {
+  background-color: transparent;
+  height: 70px;
+  margin: 30px auto;
+  width: 70%;
+}
+::v-deep .van-overlay {
+  background-color: rgba(0, 0, 0, 0.26);
 }
 </style>
