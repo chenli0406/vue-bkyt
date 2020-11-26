@@ -1,12 +1,12 @@
 import Clipboard from "clipboard";
 export default {
-  //   clipboardSuccess(){
-  //     this.$toast('复制成功');
-  //   },
+    clipboardSuccess(){
+      this.$toast('复制成功');
+    },
 
-  //   clipboardError() {
-  //     this.$toast('复制失败');
-  //   },
+    clipboardError() {
+      this.$toast('复制失败');
+    },
 
   handleClipboard(text, event, onSuccess, onError) {
     event = event || {};

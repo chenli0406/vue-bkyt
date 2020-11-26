@@ -32,17 +32,17 @@ export default {
     return {
       list: [
         {
-          url: "/MyWallet",
+          url: "/DetailIncome",
           imgPath: require("@/assets/img/myWallet-1.png"),
           title: "收入明细"
         },
         {
-          url: "/InviteUser",
+          url: "/WithdrawDepositlList",
           imgPath: require("@/assets/img/myWallet-2.png"),
           title: "提现明细"
         },
         {
-          url: "/MerchantFrom",
+          url: "/AccountManagement",
           imgPath: require("@/assets/img/myWallet-3.png"),
           title: "提现账号管理"
         }
@@ -60,7 +60,9 @@ export default {
     gotoSet() {
       this.$router.push("/Set");
     },
-    onClick() {}
+    onClick() {
+      this.$router.push("/ApplyOfWithdrawal");
+    }
   }
 };
 </script>
