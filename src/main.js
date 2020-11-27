@@ -4,32 +4,17 @@ import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 import '@/icons' // icon
-import {
-  Image as VanImage,
-  List,
-  ActionSheet,
-  Lazyload,
-  PullRefresh,
-  Toast,
-  Rate,
-  Skeleton,
-  Image,
-  Icon,
-  Checkbox,
-  Dialog,
-  Field,
-  Button,
-  Tabs,
-  Tab,
-  Empty,
-  Tabbar,
-  TabbarItem,
-  Sticky,
-  Form
-} from "vant";
+import { Image as VanImage, List, ActionSheet, Lazyload, PullRefresh, Toast, Rate, Skeleton, Image, Icon, Checkbox, Dialog, Field, Button, Tabs, Tab, Empty, Tabbar, TabbarItem, Sticky, Form } from "vant";
 import "vant/lib/index.css";
 import Vant from "vant";
+import { setStore, getStore, removeStore } from '@/utils/storage';
+
 Vue.config.productionTip = false;
+
+Vue.prototype.setStore = setStore;
+Vue.prototype.getStore = getStore;
+Vue.prototype.removeStore = removeStore;
+
 Vue.use(Vant);
 Vue.use(Toast);
 Vue.use(List);
@@ -52,6 +37,7 @@ Vue.use(Lazyload);
 Vue.use(ActionSheet);
 Vue.use(Sticky);
 Vue.use(Form);
+
 new Vue({
   router,
   store,

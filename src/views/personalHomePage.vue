@@ -235,13 +235,14 @@ export default {
       img {
         width: 30px;
         height: 30px;
-        margin-top: 10px;
+        vertical-align:middle;
       }
       span {
         font-size: 30px;
         font-weight: 600px;
         padding: 0px 20px;
         border-right: 0.02rem solid #ccc;
+        vertical-align:middle;
       }
       //  span:last-child{
       //    border-right: none;
@@ -252,12 +253,13 @@ export default {
       img {
         width: 30px;
         height: 30px;
-        margin-top: 10px;
+       vertical-align:middle;
       }
       span {
         font-size: 30px;
         padding: 0px 20px;
         font-weight: 600px;
+        vertical-align:middle;
       }
       ul {
         display: flex;

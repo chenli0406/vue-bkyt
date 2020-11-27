@@ -86,7 +86,12 @@ html,
   border-width: 0px !important;
 }
 .van-toast--html,
-.van-toast--text {
-  padding: 20px !important;
+.van-toast__text {
+   padding-top: 10px!important;
+}
+
+.van-toast{
+    padding: 20px !important;
+    min-width: 3.4rem!important;
 }
 </style>

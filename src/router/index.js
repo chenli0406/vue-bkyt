@@ -1,9 +1,19 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "@/store";
+import { getStore } from '@/utils/storage';
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "/Login",
+    meta: {
+      title: "登录"
+    },
+    component: function (resolve) {
+      require(["@/views/Login"], resolve);
+    }
+  },
   // 首页
   {
     path: "/",
@@ -11,7 +21,7 @@ const routes = [
       title: "首页"
     },
     component: function (resolve) {
-      require(["@/views/index"], resolve);
+      require(["@/views/Index"], resolve);
     }
   },
   // 我的
@@ -21,17 +31,7 @@ const routes = [
       title: "我的"
     },
     component: function (resolve) {
-      require(["@/views/my"], resolve);
-    }
-  },
-  // 登录
-  {
-    path: "/Login",
-    meta: {
-      title: "登录"
-    },
-    component: function (resolve) {
-      require(["@/views/login"], resolve);
+      require(["@/views/My"], resolve);
     }
   },
   // 注册
@@ -41,7 +41,7 @@ const routes = [
       title: "注册"
     },
     component: function (resolve) {
-      require(["@/views/register"], resolve);
+      require(["@/views/Register"], resolve);
     }
   },
   // 设置
@@ -51,7 +51,7 @@ const routes = [
       title: "设置"
     },
     component: function (resolve) {
-      require(["@/views/set"], resolve);
+      require(["@/views/Set"], resolve);
     }
   },
   // 商家开户
@@ -61,7 +61,7 @@ const routes = [
       title: "商家开户"
     },
     component: function (resolve) {
-      require(["@/views/merchantFrom"], resolve);
+      require(["@/views/MerchantFrom"], resolve);
     }
   },
   // 审核进度
@@ -71,7 +71,7 @@ const routes = [
       title: "审核进度"
     },
     component: function (resolve) {
-      require(["@/views/audit"], resolve);
+      require(["@/views/Audit"], resolve);
     }
   },
   // 我的钱包
@@ -82,7 +82,7 @@ const routes = [
       title: "我的钱包"
     },
     component: function (resolve) {
-      require(["@/views/myWallet"], resolve);
+      require(["@/views/MyWallet"], resolve);
     }
   },
   // 邀请用户
@@ -92,7 +92,7 @@ const routes = [
       title: "邀请用户"
     },
     component: function (resolve) {
-      require(["@/views/inviteUser"], resolve);
+      require(["@/views/InviteUser"], resolve);
     }
   },
   // 完善个人资料
@@ -102,7 +102,7 @@ const routes = [
       title: "完善个人资料"
     },
     component: function (resolve) {
-      require(["@/views/personalData"], resolve);
+      require(["@/views/PersonalData"], resolve);
     }
   },
   // 商家详情
@@ -112,7 +112,7 @@ const routes = [
       title: "商家详情"
     },
     component: function (resolve) {
-      require(["@/views/merchantDetails"], resolve);
+      require(["@/views/MerchantDetails"], resolve);
     }
   },
   // 个人主页
@@ -122,7 +122,7 @@ const routes = [
       title: "个人主页"
     },
     component: function (resolve) {
-      require(["@/views/personalHomePage"], resolve);
+      require(["@/views/PersonalHomePage"], resolve);
     }
   },
   // 提现账号
@@ -133,7 +133,7 @@ const routes = [
       title: "提现账号"
     },
     component: function (resolve) {
-      require(["@/views/accountManagement"], resolve);
+      require(["@/views/AccountManagement"], resolve);
     }
   },
   // 提现明细
@@ -143,7 +143,7 @@ const routes = [
       title: "提现明细"
     },
     component: function (resolve) {
-      require(["@/views/withdrawDepositlList"], resolve);
+      require(["@/views/WithdrawDepositlList"], resolve);
     }
   },
   // 收入明细
@@ -153,7 +153,7 @@ const routes = [
       title: "收入明细"
     },
     component: function (resolve) {
-      require(["@/views/detailIncome"], resolve);
+      require(["@/views/DetailIncome"], resolve);
     }
   },
   // 添加提现账号
@@ -163,7 +163,7 @@ const routes = [
       title: "添加提现账号"
     },
     component: function (resolve) {
-      require(["@/views/addWdAccount"], resolve);
+      require(["@/views/AddWdAccount"], resolve);
     }
   },
   // 提现申请
@@ -174,43 +174,97 @@ const routes = [
       title: "提现申请"
     },
     component: function (resolve) {
-      require(["@/views/applyOfWithdrawal"], resolve);
+      require(["@/views/ApplyOfWithdrawal"], resolve);
     }
   },
   // 选择提现账号
-   {
+  {
     path: "/ChoiceWithdrawal",
     meta: {
       title: "选择提现账号"
     },
     component: function (resolve) {
-      require(["@/views/choiceWithdrawal"], resolve);
+      require(["@/views/ChoiceWithdrawal"], resolve);
+    }
+  },
+  // 更换手机号
+  {
+    path: "/ChangePhone",
+    meta: {
+      title: "更换手机号"
+    },
+    component: function (resolve) {
+      require(["@/views/ChangePhone"], resolve);
+    }
+  },
+  // 实名认证
+  {
+    path: "/RealNameAuth",
+    meta: {
+      title: "实名认证"
+    },
+    component: function (resolve) {
+      require(["@/views/RealNameAuth"], resolve);
+    }
+  },
+  // 实名认证
+  {
+    path: "/Feedback",
+    meta: {
+      title: "实名认证"
+    },
+    component: function (resolve) {
+      require(["@/views/Feedback"], resolve);
     }
   },
 ];
-
 const router = new VueRouter({
   routes
 });
 
-router.beforeEach((to, form, next) => {
-  if (to.meta && to.meta.title) {
-    document.title = to.meta.title;
-  }
-  if (to.path === "/") {
-    store.commit("setTabbarIndex", 0);
-  } else if (to.path === "/My") {
-    store.commit("setTabbarIndex", 1);
-  } else {
+router.beforeEach((to, from, next) => {
+  if (to.path === '/Login') {
     store.commit("setTabbarIndex", 2);
+    next();
+  } else {
+    let token = getStore('token');
+    console.log(token);
+    if (token === null || token === '') {
+         store.commit("setTabbarIndex", 2);
+          router.push("/Login");
+    } else {
+      if (to.path === "/") {
+        store.commit("setTabbarIndex", 0);
+      } else if (to.path === "/My") {
+        store.commit("setTabbarIndex", 1);
+      } else {
+        store.commit("setTabbarIndex", 2);
+      }
+      next();
+    }
   }
-  next();
 });
 
+
+// router.beforeEach((to, form, next) => {
+//   if (to.meta && to.meta.title) {
+//     document.title = to.meta.title;
+//   }
+//   if (to.path === "/") {
+//     store.commit("setTabbarIndex", 0);
+//   } else if (to.path === "/My") {
+//     store.commit("setTabbarIndex", 1);
+//   } else {
+//     store.commit("setTabbarIndex", 2);
+//   }
+//   next();
+// });
+
 //重写router 防止路由跳转报错
-const routerPush = VueRouter.prototype.push
-VueRouter.prototype.push = function push(location) {
-  return routerPush.call(this, location).catch(error => error)
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push (location, onResolve, onReject) {
+  if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+  return originalPush.call(this, location).catch(err => err)
 }
 
 export default router;

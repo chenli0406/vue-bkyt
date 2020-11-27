@@ -56,19 +56,26 @@ export default {
   created() {},
   methods: {
     gotoPhone() {
-      this.$router.push("/Set");
+      this.$router.push('/ChangePhone');
     },
     gotoRealName() {
-      this.$router.push("/Set");
+      this.$router.push('/RealNameAuth');
     },
     gotoFeedback() {
-      this.$router.push("/Set");
+      this.$router.push('/Feedback');
     },
     gotoAboutUs() {
-      this.$router.push("/Set");
+      this.$router.push('/Set');
     },
-    onClick() {}
-  }
+    onClick() {
+      // 自定义加载图标
+      this.$toast.loading({
+        message: '加载中...',
+        forbidClick: true,
+        loadingType: 'spinner',
+      });
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

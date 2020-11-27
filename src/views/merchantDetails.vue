@@ -245,6 +245,7 @@ export default {
       img {
         width: 30px;
         height: 30px;
+        vertical-align:middle;
       }
       span {
         margin-left: 30px;
@@ -261,6 +262,7 @@ export default {
       img {
         width: 40px;
         height: 40px;
+       vertical-align:middle;
       }
       span {
         font-size: 24px;

@@ -70,6 +70,8 @@ export default {
         this.$toast("请输入短信验证码");
         return;
       }
+      this.setStore('token', '123');
+      this.$router.push("/");
       return false;
     },
     onSendCode() {},

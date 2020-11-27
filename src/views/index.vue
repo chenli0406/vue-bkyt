@@ -233,7 +233,10 @@ export default {
       ],
     };
   },
-  created() {},
+   created() {
+    // const res = await ping();
+    // console.log(res);
+  },
   methods: {
     onLoad() {
       this.loading = false;
