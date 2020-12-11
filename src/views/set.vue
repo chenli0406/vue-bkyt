@@ -1,10 +1,11 @@
 <template>
   <div class="content">
-    <div>
-      <div class="btn">
+    <nav-bar :nav-data="navData" @clickRight="clickRight"></nav-bar>
+    <div style="margin-top:50px">
+      <!-- <div class="btn">
         <span>注销</span>
       </div>
-      <div style="clear: both"></div>
+      <div style="clear: both"></div> -->
       <ul>
         <li @click="gotoPhone">
           <h3>手机号</h3>
@@ -49,11 +50,22 @@
 </template>
 
 <script>
+import NavBar  from "../components/navBar/index"
 export default {
-  data() {
-    return {};
+  components: {
+      NavBar 
   },
-  created() {},
+  data() {
+    return {
+      navData: {
+        title: this.$route.meta.title,
+        rightText: "注销",
+        rightIcon: false,
+      }
+    };
+  },
+  created() {
+  },
   methods: {
     gotoPhone() {
       this.$router.push('/ChangePhone');
@@ -75,6 +87,8 @@ export default {
         loadingType: 'spinner',
       });
     },
+    clickRight(){
+    }
   },
 };
 </script>
@@ -128,4 +142,9 @@ ul {
   padding: 20px 40px 0px 40px;
   float: right;
 }
+.nav-bar-icon-color{
+  color: #000;
+}
+
+
 </style>

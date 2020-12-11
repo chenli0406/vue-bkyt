@@ -1,5 +1,6 @@
 <template>
   <div class="content">
+    <nav-bar :nav-data="navData"></nav-bar>
     <div class="head-portrait">
       <van-swipe :autoplay="13000">
         <van-swipe-item v-for="(image, index) in images" :key="index">
@@ -26,8 +27,8 @@
           <div>距您1.5KM</div>
         </div>
       </div>
-      <van-sticky>
-        <div class="tab_wrap" :offset-top="30">
+      <van-sticky :offset-top="40">
+        <div class="tab_wrap">
             <div class="tab_item" :class="{ tab_active: tab == 1 }" @click="tab = 1">商家优惠(2)</div>
             <div class="tab_item" :class="{ tab_active: tab == 2 }" @click="tab = 2">商家评价(3)</div>
        </div>
@@ -102,9 +103,18 @@
 </template>
 
 <script>
+import NavBar  from "../components/navBar/index"
 export default {
+   components: {
+      NavBar 
+  },
   data() {
     return {
+      navData: {
+        title: this.$route.meta.title,
+        rightText: "",
+        rightIcon: false,
+      },
       tab: 1,
       images: ['https://img.yzcdn.cn/vant/cat.jpeg', require('@/assets/img/swipe-img.png')],
       listitem: [
@@ -222,7 +232,8 @@ export default {
 <style lang="scss" scoped>
 .content {
   .head-portrait {
-    padding: 40px;
+    margin-top: 100px;
+    padding: 20px 40px 40px 40px;
     height: 30vh;
     .swipe-img {
       width: 100%;

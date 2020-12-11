@@ -1,5 +1,6 @@
 <template>
   <div class="content">
+     <nav-bar :nav-data="navData"></nav-bar>
     <div class="box">
       <div class="box-content">
         <div class="title">钱包金额（元）</div>
@@ -27,9 +28,18 @@
 </template>
 
 <script>
+import NavBar  from "../components/navBar/index"
 export default {
+  components: {
+      NavBar 
+  },
   data() {
     return {
+       navData: {
+        title: this.$route.meta.title,
+        rightText: "",
+        rightIcon: false,
+      },
       list: [
         {
           url: "/DetailIncome",
@@ -62,7 +72,8 @@ export default {
     },
     onClick() {
       this.$router.push("/ApplyOfWithdrawal");
-    }
+    },
+  
   }
 };
 </script>
@@ -79,7 +90,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 40px 40px 0px 40px;
+    margin: 140px 40px 0px 40px;
     .box-content {
       text-align: center;
       .title {

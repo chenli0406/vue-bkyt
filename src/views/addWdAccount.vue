@@ -1,5 +1,6 @@
 <template>
   <div class="content">
+     <nav-bar :nav-data="navData"></nav-bar>
     <div class="form">
       <van-field v-model="form.mobile" label="账号" type="number" maxlength="11" placeholder="请输入账号" />
       <van-field v-model="form.name" label="姓名" maxlength="11" placeholder="请输入姓名" />
@@ -12,9 +13,18 @@
 
 <script>
 import { isEmpty, isMobilePhone } from 'class-validator';
+import NavBar  from "../components/navBar/index"
 export default {
+   components: {
+      NavBar 
+  },
   data() {
     return {
+       navData: {
+        title: this.$route.meta.title,
+        rightText: "",
+        rightIcon: false,
+      },
       form: {
         mobile: '',
         name: '',
@@ -42,10 +52,9 @@ export default {
 <style lang="scss" scoped>
 .content {
   background-color: #fff;
-  height: 100vh;
   padding: 0px 40px;
   .form {
-    padding: 100px 0;
+   margin-top: 120px;
     ::v-deep .van-cell {
       line-height: 80px;
       padding: 10px;

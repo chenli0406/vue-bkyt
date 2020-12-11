@@ -1,6 +1,7 @@
 <template>
   <div class="content">
-    <van-tabs v-model="active" type="card" sticky>
+    <nav-bar :nav-data="navData" @clickRight="goDialog"></nav-bar>
+    <van-tabs v-model="active" type="card" sticky  style="margin-top:40px" offset-top="40">
       <van-tab title="邀请的用户(11)">
         <div class="tab-content">
           <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
@@ -68,9 +69,9 @@
         </div>
       </van-tab>
     </van-tabs>
-    <div class="select-box" v-show="active == 1" @click="goDialog">
+    <!-- <div class="select-box" v-show="active == 1" @click="goDialog">
       <img src="../assets/icons/filtrate.png" />
-    </div>
+    </div> -->
     <van-action-sheet v-model="show" :closeable="false" title="搜索筛选">
       <div class="sheet-box">
         <div class="clear" @click="onClear">重置</div>
@@ -89,10 +90,20 @@
 </template>
 
 <script>
+import NavBar  from "../components/navBar/index"
 export default {
+   components: {
+      NavBar 
+  },
   data() {
     return {
       active: 0,
+      navData: {
+        title: this.$route.meta.title,
+        rightText: "",
+        rightIcon: false,
+        rightImg: require("@/assets/icons/filtrate.png")
+      },
       show: false,
       list: [
         {
@@ -232,6 +243,15 @@ export default {
         },
       ],
     };
+  },
+ watch: {
+    active(){
+      if(this.active == 0){
+        this.navData.rightIcon = false;
+      }else{
+         this.navData.rightIcon = true;
+      }
+    }
   },
    created() {
     // const res = await ping();

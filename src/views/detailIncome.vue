@@ -1,9 +1,10 @@
 <template>
   <div class="content">
+     <nav-bar :nav-data="navData" @clickRight="showPicker = true"></nav-bar>
     <div class="box">
-      <div class="right-box" @click="showPicker = true">
+      <!-- <div class="right-box" @click="showPicker = true">
         <svg-icon icon-class="date" class="svgIcon" />
-      </div>
+      </div> -->
       <div class="box-content">
         <div class="title">总收入（元）</div>
         <div class="balance">2001.00</div>
@@ -36,9 +37,19 @@
 </template>
 
 <script>
+import NavBar  from "../components/navBar/index"
 export default {
+  components: {
+      NavBar 
+  },
   data() {
     return {
+       navData: {
+        title: this.$route.meta.title,
+        rightText: "",
+        rightIcon: true,
+        rightSvg: 'date',
+      },
       list: [
         {
           date: '2020-08-18',
@@ -120,10 +131,14 @@ export default {
 .content {
   padding: 40px 40px;
   .box {
+    margin-top: 80px;
     background: url('../assets/img/myWallet-bg.png');
     background-size: 100% 100%;
     height: 15vh;
     color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     .box-content {
       text-align: center;
       .title {

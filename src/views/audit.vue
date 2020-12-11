@@ -1,6 +1,7 @@
 <template>
   <div class="content">
-    <van-tabs v-model="active" type="card" sticky>
+    <nav-bar :nav-data="navData"></nav-bar>
+    <van-tabs v-model="active" type="card" sticky style="margin-top:40px" offset-top="40">
       <van-tab title="审核中">
         <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
           <van-list
@@ -127,9 +128,18 @@
 </template>
 
 <script>
+import NavBar  from "../components/navBar/index"
 export default {
+  components: {
+      NavBar 
+  },
   data() {
     return {
+       navData: {
+        title: this.$route.meta.title,
+        rightText: "",
+        rightIcon: false,
+      },
       active: 0,
       list: [
         {
@@ -229,7 +239,10 @@ export default {
     },
     copy(val) {
       console.log(val);
-    }
+    },
+    onClickLeft(){
+      this.$router.go(-1);
+    },
   }
 };
 </script>

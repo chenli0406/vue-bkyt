@@ -94,4 +94,31 @@ html,
     padding: 20px !important;
     min-width: 3.4rem!important;
 }
+ .van-nav-bar{
+  line-height: 100px!important;
+  .van-nav-bar__content{
+   height: 100px;
+  }
+  .van-icon{
+       color: #000!important;
+    }
+  .van-nav-bar__text{
+      color: #000;
+    }
+  .van-ellipsis{
+       overflow: auto;
+       white-space: normal;
+       
+    }
+    .van-nav-bar__title{
+      font-size: 20px!important;
+      color: #000!important;
+    }
+    .van-nav-bar__left{
+     padding-left: 40px;
+    }
+    .van-nav-bar__right{
+      padding-right: 40px;
+    }
+}
 </style>

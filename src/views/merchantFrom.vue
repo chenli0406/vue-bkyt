@@ -1,5 +1,6 @@
 <template>
   <div class="content">
+    <nav-bar :nav-data="navData"></nav-bar>
     <div class="form">
       <div class="input">
         <van-field readonly clickable name="picker" :value="form.type" label="商户类型" placeholder="请选择商户类型" @click="showPicker = true" />
@@ -78,9 +79,18 @@
 <script>
 import { isEmpty, isMobilePhone } from 'class-validator';
 import AreaList from '../utils/area';
+import NavBar  from "../components/navBar/index"
 export default {
+   components: {
+      NavBar 
+  },
   data() {
     return {
+       navData: {
+        title: this.$route.meta.title,
+        rightText: "",
+        rightIcon: false,
+      },
       form: {
         type: '',
         name: '',
@@ -141,7 +151,7 @@ export default {
         .map((item) => item.name)
         .join('/');
       this.showArea = false;
-    },
+    }
   },
 };
 </script>
@@ -152,6 +162,7 @@ export default {
   min-height: 100vh;
   .form {
     padding-bottom: 200px;
+    margin-top: 70px;
   }
 }
 

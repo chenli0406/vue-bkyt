@@ -1,5 +1,6 @@
 <template>
   <div class="content">
+    <nav-bar :nav-data="navData"></nav-bar>
     <div class="head-portrait">
       <div class="bg-img">
         <van-image width="100%" height="100%" fit="cover" :src="bgImgPath" />
@@ -79,9 +80,18 @@
 </template>
 
 <script>
+import NavBar  from "../components/navBar/index"
 export default {
+   components: {
+      NavBar 
+  },
   data() {
     return {
+       navData: {
+        title: this.$route.meta.title,
+        rightText: "",
+        rightIcon: false,
+      },
       bgImgPath: "",
       activeClass: 0,
       imgData: [
@@ -118,20 +128,21 @@ export default {
 </style>
 <style lang="scss" scoped>
 .content {
-  min-height: 100vh;
+  height: 100vh;
   background-color: #fff;
   .head-portrait {
-    padding: 40px;
-    height: 30vh;
+    margin-top: 80px;
+    padding:  40px;
+    height: 26vh;
     .bg-img {
       width: 100%;
-      height: 30vh;
+      height: 26vh;
       position: relative;
     }
     .img-btn {
       display: flex;
       position: absolute;
-      top: 26vh;
+      top: 28vh;
       margin: 0px 20px;
       div {
         margin: 0px 10px;

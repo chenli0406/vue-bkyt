@@ -1,12 +1,13 @@
 <template>
   <div class="content">
-    <div v-if="flag == false && list.length > 0" class="btn" @click="onShowDel">
+     <nav-bar :nav-data="navData" @clickRight="clickRight"></nav-bar>
+    <!-- <div v-if="flag == false && list.length > 0" class="btn" @click="onShowDel">
       <span>编辑</span>
     </div>
     <div v-else-if="flag == true && list.length > 0" class="btn" @click="onDel">
       <span>删除</span>
-    </div>
-    <div style="clear: both"></div>
+    </div> -->
+    <!-- <div style="clear: both"></div> -->
     <ul v-if="list.length > 0">
       <li v-for="(item, index) in list" :key="index">
         <div class="left-box">
@@ -32,9 +33,18 @@
 </template>
 
 <script>
+import NavBar  from "../components/navBar/index"
 export default {
+   components: {
+      NavBar 
+  },
   data() {
     return {
+       navData: {
+        title: this.$route.meta.title,
+        rightText: "",
+        rightIcon: false,
+      },
       list: [
         {
           phone: '13882476590',
@@ -49,7 +59,11 @@ export default {
       delList: [],
     };
   },
-  created() {},
+  created() {
+    if(this.flag == false && this.list.length > 0){
+      this.navData.rightText = "编辑";
+    }
+  },
   methods: {
     onClick() {
       this.$router.push('/AddWdAccount');
@@ -63,16 +77,25 @@ export default {
         this.delList = this.delList.filter(item => item!== val);
       }
     },
-    onShowDel() {
-      this.flag = true;
-    },
+    // onShowDel() {
+    //   this.flag = true;
+    // },
     onDel() {
       if (this.delList.length > 0) {
         console.log('11');
+        //  this.navData.rightText = "";
       } else {
         this.$toast('至少选择一个');
       }
     },
+    clickRight(){
+      if(this.flag == true){
+        this.onDel();
+      }else{
+        this.flag = true;
+        this.navData.rightText = "删除"
+      }
+    }
   },
 };
 </script>
@@ -80,6 +103,7 @@ export default {
 .content {
   padding: 0px 40px;
   ul {
+    margin-top: 70px;
     padding: 30px 0;
     li {
       display: flex;

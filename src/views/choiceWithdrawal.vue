@@ -1,9 +1,10 @@
 <template>
   <div class="content">
-    <div class="btn" @click="onSubmit">
+    <nav-bar :nav-data="navData" @clickRight="onSubmit"></nav-bar>
+    <!-- <div class="btn" @click="onSubmit">
       <span>确定</span>
-    </div>
-    <div style="clear: both"></div>
+    </div> -->
+    <!-- <div style="clear: both"></div> -->
     <ul>
       <li v-for="(item, index) in list" :key="index">
         <div class="left-box">
@@ -23,9 +24,18 @@
 </template>
 
 <script>
+import NavBar  from "../components/navBar/index"
 export default {
+  components: {
+      NavBar 
+  },
   data() {
     return {
+        navData: {
+        title: this.$route.meta.title,
+        rightText: "确定",
+        rightIcon: false,
+      },
       list: [
         {
           id: "1",
@@ -67,6 +77,7 @@ export default {
   padding: 0px 40px;
   ul {
     padding: 30px 0;
+    margin-top: 70px;
     li {
       display: flex;
       justify-content: space-between;

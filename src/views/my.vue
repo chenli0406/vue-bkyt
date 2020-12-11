@@ -1,9 +1,10 @@
 <template>
   <div class="content">
-    <div class="btn" @click="gotoSet">
+    <nav-bar :nav-data="navData" @clickRight="clickRight"></nav-bar>
+    <!-- <div class="btn" @click="gotoSet">
       <img src="../assets/icons/set.png" />
     </div>
-    <div style="clear: both;"></div>
+    <div style="clear: both;"></div> -->
     <div class="top">
       <van-image round width="70px" :src="imgPath">
         <template v-slot:loading>
@@ -37,9 +38,19 @@
 </template>
 
 <script>
+import NavBar  from "../components/navBar/index"
 export default {
+   components: {
+      NavBar 
+  },
   data() {
     return {
+       navData: {
+        title: this.$route.meta.title,
+        rightText: "",
+        rightIcon: true,
+        rightImg: require("@/assets/icons/set.png")
+      },
       imgPath: require("@/assets/img/2.png"),
       list: [
         {
@@ -73,8 +84,8 @@ export default {
     gotoPersonal() {
       this.$router.push("/PersonalData");
     },
-    gotoSet() {
-      this.$router.push("/Set");
+    clickRight(){
+       this.$router.push("/Set");
     }
   }
 };
@@ -84,8 +95,7 @@ export default {
   height: 100vh;
   overflow: hidden;
   .btn {
-    padding: 40px 40px 0px 40px;
-    width: 40px;
+    width: 35px;
     display: flex;
     float: right;
     img {
@@ -93,6 +103,7 @@ export default {
     }
   }
   .top {
+    margin-top: 110px;
     padding: 10px 40px 40px 40px;
     display: flex;
     justify-content: space-between;

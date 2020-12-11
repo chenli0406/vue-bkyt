@@ -28,7 +28,7 @@ const routes = [
   {
     path: "/My",
     meta: {
-      title: "我的"
+      title: "个人中心"
     },
     component: function (resolve) {
       require(["@/views/My"], resolve);
@@ -207,11 +207,11 @@ const routes = [
       require(["@/views/RealNameAuth"], resolve);
     }
   },
-  // 实名认证
+  // 反馈
   {
     path: "/Feedback",
     meta: {
-      title: "实名认证"
+      title: "反馈"
     },
     component: function (resolve) {
       require(["@/views/Feedback"], resolve);
@@ -223,6 +223,9 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  if (to.meta && to.meta.title) {
+    document.title = to.meta.title;
+  }
   if (to.path === '/Login') {
     store.commit("setTabbarIndex", 2);
     next();

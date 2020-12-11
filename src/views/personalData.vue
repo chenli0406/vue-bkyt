@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div style="height:10px;background-color: #F9FAFC; width:100%"></div>
+     <nav-bar :nav-data="navData"></nav-bar>
     <div class="form">
       <div class="uploader-box">
         <label>头像</label>
@@ -21,10 +21,19 @@
 </template>
 
 <script>
+import NavBar  from "../components/navBar/index"
 import { isEmpty } from "class-validator";
 export default {
+  components: {
+      NavBar 
+  },
   data() {
     return {
+      navData: {
+        title: this.$route.meta.title,
+        rightText: "",
+        rightIcon: false,
+      },
       fileList: [],
       form: {
         headImage: "",
@@ -44,7 +53,7 @@ export default {
         return;
       }
       return false;
-    }
+    },
   }
 };
 </script>
@@ -77,6 +86,7 @@ export default {
   background-color: #fff;
   .form {
     padding: 40px;
+    margin-top: 50px;
   }
 }
 

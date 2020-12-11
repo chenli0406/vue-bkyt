@@ -1,5 +1,6 @@
 <template>
   <div class="content">
+    <nav-bar :nav-data="navData"></nav-bar>
     <div class="code">
       <img id="imageWrapper" src="../assets/img/erweima.png" />
     </div>
@@ -28,11 +29,20 @@
 </template>
 
 <script>
+import NavBar  from "../components/navBar/index"
 import clipboard from "../utils/clipboard";
 import html2canvas from "html2canvas";
 export default {
+  components: {
+      NavBar 
+  },
   data() {
     return {
+       navData: {
+        title: this.$route.meta.title,
+        rightText: "",
+        rightIcon: false,
+      },
       code: "111111"
     };
   },
@@ -74,7 +84,7 @@ export default {
         }
       );
     },
-    onCopyLink() {}
+    onCopyLink() {},
   }
 };
 </script>

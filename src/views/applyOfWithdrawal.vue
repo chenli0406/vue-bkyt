@@ -1,5 +1,6 @@
 <template>
   <div class="content">
+    <nav-bar :nav-data="navData"></nav-bar>
     <div class="box">
       <div class="box-content">
         <div class="balance">{{ num }}</div>
@@ -8,7 +9,7 @@
       </div>
     </div>
     <div class="form">
-      <van-field v-model="form.count" type="number" placeholder="请输入提现金额">
+      <van-field v-model="form.count"  placeholder="请输入提现金额">
         <template #button>
           <van-button size="small" style="border: none; color: #7e6ee3" @click="onAll">全部提现</van-button>
         </template>
@@ -35,9 +36,18 @@
 </template>
 
 <script>
+import NavBar  from "../components/navBar/index"
 export default {
+   components: {
+      NavBar 
+  },
   data() {
     return {
+       navData: {
+        title: this.$route.meta.title,
+        rightText: "",
+        rightIcon: false,
+      },
       num: '90.00',
       form: {
         count: '',
@@ -79,7 +89,7 @@ export default {
     color: #ffffff;
     display: flex;
     align-items: center;
-    margin: 40px 40px 0px 40px;
+    margin: 120px 40px 0px 40px;
     .box-content {
       padding: 40px;
       width: 100%;
